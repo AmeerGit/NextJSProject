@@ -1,6 +1,7 @@
 import React from "react";
 import { Block, ExtendCSS, Flex, Text } from "vcc-ui";
 import Image from "next/image";
+import LinkComponent from "./LinkComponent";
 
 interface Props {
   id: string;
@@ -18,6 +19,7 @@ const Card: React.FC<Props> = ({
   imageUrl,
 }) => {
   return (
+    <>
     <Flex extend={clickableContainerCSS} aria-label={modelName}>
       <Text
         variant="bates"
@@ -60,6 +62,8 @@ const Card: React.FC<Props> = ({
         />
       </Flex>
     </Flex>
+    <LinkComponent id={id}/>
+    </>
   );
 };
 

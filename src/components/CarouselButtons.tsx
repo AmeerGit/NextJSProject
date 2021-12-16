@@ -1,28 +1,31 @@
 import React from "react";
-import { extend, Flex, Button, Block } from "vcc-ui";
-import Icons from '../../docs/chevron-circled.svg'
+import { Flex, Button, Block } from "vcc-ui";
+import Icons from "../../docs/chevron-circled.svg";
 
-const CarouselButtons = () => {
+interface Props {
+    slideRef: {
+        current : any;
+    };
+  }
+
+const CarouselButtons : React.FC<Props>  = ({ slideRef }) => {
+  const next = () => {
+    slideRef.current.slickNext();
+  };
+  const previous = () => {
+    slideRef.current.slickPrev();
+  };
+
   return (
     <>
       <Flex extend={{ display: "flex", flexDirection: "row" }}>
-        <Block></Block>
+        <Block extend={{ flexGrow: 1 }}></Block>
         <Block extend={{ display: "flex", flexDirection: "row" }}>
-          <Button size="small" variant="text">
-            <img
-              src={Icons}
-              alt='icons'
-              width="100%"
-              height="250"
-            />
+          <Button size="small" variant="text" onClick={next}>
+            Prev
           </Button>
-          <Button size="small" variant="text">
-            <img
-              src={Icons}
-              alt='icons'
-              width="100%"
-              height="250"
-            />
+          <Button size="small" variant="text" onClick={previous}>
+            Next
           </Button>
         </Block>
       </Flex>
