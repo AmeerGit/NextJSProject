@@ -1,18 +1,18 @@
-import  Home  from "../src/components/Home";
-import "../public/css/styles.css";
 import React from "react";
-import { StyleProvider, ThemePicker } from 'vcc-ui';
+import { StyleProvider, ThemePicker } from "vcc-ui";
+import "../public/css/styles.css";
+// import App from 'next/app'
 
-function HomePage() {
+function MyApp({ Component, pageProps }) {
   return (
     <StyleProvider>
-    <ThemePicker variant="light">
-    <React.StrictMode>
-      <Home />
-    </React.StrictMode>
-    </ThemePicker>
+      <ThemePicker variant="light">
+        <React.StrictMode>
+          <Component {...pageProps} />
+        </React.StrictMode>
+      </ThemePicker>
     </StyleProvider>
   );
 }
 
-export default HomePage;
+export default MyApp;

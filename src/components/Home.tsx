@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Flex, CardContent, Text, Spacer } from "vcc-ui";
-import axios from "axios";
-
 import CardComponent from "../components/Card";
 // Import carousel css files
 import "slick-carousel/slick/slick.css";
@@ -9,7 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import LinkComponent from "./LinkComponent";
 import CarouselButtons from "./CarouselButtons";
+import { fetchData} from '../services/data'
 
+import settings from '../common/Utils';
 
 interface Car {
     id: string;
@@ -26,50 +26,11 @@ const Home : React.FC<Car> = () => {
   const slideRef = useRef(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const url = "api/cars.json";
-      axios.get(url).then((res) => {
-        setCarsList(res.data);
-      });
-    }
-    fetchData();
+  
+   fetchData().then((res) => setCarsList(res)).catch( err => console.log(err));
   }, []);
 
-  const settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    beforeChange: (next : any) => setActiveSlide(next),
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-        },
-      },
-    ],
-  };
-
+ 
   return (
     <div className="container">
       <Slider ref={slideRef}  {...settings}>
@@ -83,12 +44,13 @@ const Home : React.FC<Car> = () => {
                 bodyType={car.bodyType}
                 modelType={car.modelType}
                 imageUrl={car.imageUrl}
+                
               />
             </>
           );
         })}
       </Slider>
-      <CarouselButtons slideRef={slideRef}/>
+      <CarouselButtons slideRef={slideRef} activeSlide={activeSlide}/>
     </div>
   );
 };
