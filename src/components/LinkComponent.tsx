@@ -15,7 +15,7 @@ const LinkComponent: React.FC<LinkProps> = ({ id }) => {
       }}
     >
       <Link arrow="right">
-        <Routing href={`/learn/${id}`}>READ MORE</Routing>
+        <Routing href={`/learn/${id}`} >READ MORE</Routing>
       </Link>
       <Link  arrow="right">
         <Routing href={`/shop/${id}`}>SHOP</Routing>

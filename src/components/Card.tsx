@@ -69,8 +69,9 @@ const Card: React.FC<Props> = ({
 
 const clickableContainerCSS: ExtendCSS = ({ theme: { color } }) => ({
   textDecoration: "none",
-  width: "350px",
+  //width: "350px",
   flex: "1 1 auto",
+  margin : '0 0.5rem',
   "& .item-image": {
     pointerEvents: "none",
     transition: "transform 300ms",
@@ -89,6 +90,7 @@ const clickableContainerCSS: ExtendCSS = ({ theme: { color } }) => ({
     "& .item-name-suffix": {
       color: color.foreground.action,
     },
+    
   },
 });
 

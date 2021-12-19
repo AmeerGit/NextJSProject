@@ -1,7 +1,8 @@
 
-.container {
-    width: 95%;
-    margin: auto;
-    margin-top: 10em;
+.reverseIcon {
+  transform: scaleX(-1);
+}
+.removeUnderline {
+  text-decoration: "none";
 }
 
