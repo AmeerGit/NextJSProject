@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex, Link } from "vcc-ui";
-import Routing from "next/Link";
+
 interface LinkProps {
   id: String;
 }
@@ -14,11 +14,11 @@ const LinkComponent: React.FC<LinkProps> = ({ id }) => {
         justifyContent: "space-evenly",
       }}
     >
-      <Link arrow="right">
-        <Routing href={`/learn/${id}`} >READ MORE</Routing>
+      <Link arrow="right" href={`/learn/${id}`} aria-label={`${id}`}>
+        READ MORE
       </Link>
-      <Link  arrow="right">
-        <Routing href={`/shop/${id}`}>SHOP</Routing>
+      <Link href={`/shop/${id}`} arrow="right" aria-label={`${id}`}>
+        SHOP
       </Link>
     </Flex>
   );

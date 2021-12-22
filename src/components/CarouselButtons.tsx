@@ -19,18 +19,18 @@ const CarouselButtons: React.FC<Props> = ({ slideRef }) => {
 
   return (
     <Flex extend={rootCSS} >
-      <Click onClick={previous}>
+      <Click onClick={previous}  aria-label="Previous button">
         <Image
           height="40"
-          width="40"
+          width="40"  
           src={Icons}
-          alt="Previous button"
-          className="reverseIcon"
+          role="Presentation"
+          className="reverseIcon" alt='Previous button'
         />
       </Click>
       <Spacer />
-      <Click onClick={next}>
-        <Image height="40" width="40" src={Icons} alt="Next button" />
+      <Click onClick={next} aria-label="Next button">
+        <Image height="40" width="40" src={Icons} role="Presentation" alt='Next button' />
       </Click>
     </Flex>
   );

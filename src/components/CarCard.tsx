@@ -1,5 +1,5 @@
 import React from "react";
-import { Block, ExtendCSS, Flex, Text } from "vcc-ui";
+import { Block, ExtendCSS, Flex, Text, View } from "vcc-ui";
 import Image from "next/image";
 import LinkComponent from "./LinkComponent";
 
@@ -19,15 +19,15 @@ const Card: React.FC<Props> = ({
   imageUrl,
 }) => {
   return (
-    <>
-    <Flex extend={clickableContainerCSS} aria-label={modelName}>
+    <View role='listitem'>
+    <Flex extend={clickableContainerCSS} aria-label={modelName} as='a' href={`/learn/${id}`}>
       <Text
         variant="bates"
         subStyle="emphasis"
         extend={secondaryCss}
         className="item-category"
       >
-        {bodyType && bodyType.toUpperCase()}
+        {bodyType }
       </Text>
       <Block as="h4" extend={titleCSS}>
         <Text
@@ -63,7 +63,7 @@ const Card: React.FC<Props> = ({
       </Flex>
     </Flex>
     <LinkComponent id={id}/>
-    </>
+    </ View>
   );
 };
 

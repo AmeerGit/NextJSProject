@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 // Import carousel css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { fetchData } from "../services/data";
-import CarListComponent from "./CarListComponent";
+import { fetchData } from "../services/API";
 import { View } from "vcc-ui";
+import FilterCars from "./FilterCars";
 
 const Home: React.FC = () => {
   const [carsList, setCarsList] = useState([]);
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         width: "98%",
       }}
     >
-      <CarListComponent carsList={carsList} slideRef={slideRef} />
+      {carsList && <FilterCars cars={carsList} slideRef={slideRef} />}
     </View>
   );
 };
